@@ -23,7 +23,7 @@ jobs:
           echo "Running tests..."
 
       - name: Post status comment to Issue #1
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: 1
