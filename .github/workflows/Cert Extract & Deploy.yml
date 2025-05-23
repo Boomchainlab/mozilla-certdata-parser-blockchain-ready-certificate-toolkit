@@ -1,0 +1,32 @@
+name: Cert Extract & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  extract-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Extract certificates
+        run: |
+          # Insert your certificate extraction commands here
+          echo "Running certificate extraction..."
+
+      - name: Run tests
+        run: |
+          # Insert your test commands here
+          echo "Running tests..."
+
+      - name: Post status comment to Issue #1
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: 1
+          body: |
+            ✅ Build and certificate extraction succeeded on commit ${{ github.sha }}.
+            Workflow URL: ${{ github.workflow }} - ${{ github.run_number }}
